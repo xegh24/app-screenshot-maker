@@ -1,0 +1,133 @@
+{
+  "name": "Restaurant Menu App",
+  "description": "Mobile app template for restaurant menus with categories and item details",
+  "category": "food",
+  "canvas_data": {
+    "canvas": {
+      "width": 375,
+      "height": 812,
+      "backgroundColor": "#F9FAFB"
+    },
+    "elements": [
+      {
+        "type": "shape",
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 100,
+        "rotation": 0,
+        "scaleX": 1,
+        "scaleY": 1,
+        "opacity": 1,
+        "visible": true,
+        "locked": false,
+        "style": {},
+        "data": {
+          "shape": "rectangle",
+          "fill": "#DC2626",
+          "stroke": "none",
+          "strokeWidth": 0
+        }
+      },
+      {
+        "type": "text",
+        "x": 20,
+        "y": 50,
+        "width": 335,
+        "height": 30,
+        "rotation": 0,
+        "scaleX": 1,
+        "scaleY": 1,
+        "opacity": 1,
+        "visible": true,
+        "locked": false,
+        "style": {},
+        "data": {
+          "text": "Bella Italia",
+          "fontSize": 24,
+          "fontFamily": "Inter",
+          "fontWeight": "bold",
+          "fontStyle": "normal",
+          "textAlign": "center",
+          "textDecoration": "none",
+          "color": "#ffffff",
+          "lineHeight": 1.2,
+          "letterSpacing": 0
+        }
+      },
+      {
+        "type": "text",
+        "x": 20,
+        "y": 120,
+        "width": 100,
+        "height": 25,
+        "rotation": 0,
+        "scaleX": 1,
+        "scaleY": 1,
+        "opacity": 1,
+        "visible": true,
+        "locked": false,
+        "style": {},
+        "data": {
+          "text": "Categories",
+          "fontSize": 18,
+          "fontFamily": "Inter",
+          "fontWeight": "600",
+          "fontStyle": "normal",
+          "textAlign": "left",
+          "textDecoration": "none",
+          "color": "#1F2937",
+          "lineHeight": 1.2,
+          "letterSpacing": 0
+        }
+      },
+      {
+        "type": "shape",
+        "x": 20,
+        "y": 160,
+        "width": 80,
+        "height": 40,
+        "rotation": 0,
+        "scaleX": 1,
+        "scaleY": 1,
+        "opacity": 1,
+        "visible": true,
+        "locked": false,
+        "style": {},
+        "data": {
+          "shape": "rectangle",
+          "fill": "#FEF3C7",
+          "stroke": "#F59E0B",
+          "strokeWidth": 1,
+          "cornerRadius": 20
+        }
+      },
+      {
+        "type": "text",
+        "x": 20,
+        "y": 170,
+        "width": 80,
+        "height": 20,
+        "rotation": 0,
+        "scaleX": 1,
+        "scaleY": 1,
+        "opacity": 1,
+        "visible": true,
+        "locked": false,
+        "style": {},
+        "data": {
+          "text": "Pizza 🍕",
+          "fontSize": 14,
+          "fontFamily": "Inter",
+          "fontWeight": "500",
+          "fontStyle": "normal",
+          "textAlign": "center",
+          "textDecoration": "none",
+          "color": "#92400E",
+          "lineHeight": 1.2,
+          "letterSpacing": 0
+        }
+      }
+    ]
+  }
+}

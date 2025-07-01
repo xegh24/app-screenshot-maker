@@ -1,0 +1,42 @@
+<svg width="400" height="890" viewBox="0 0 400 890" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- iPhone 14 Frame -->
+  <defs>
+    <linearGradient id="iphoneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  
+  <!-- Device Shadow -->
+  <rect x="10" y="10" width="380" height="870" rx="50" ry="50" fill="black" opacity="0.1" filter="url(#shadow)"/>
+  
+  <!-- Device Body -->
+  <rect x="0" y="0" width="400" height="890" rx="50" ry="50" fill="url(#iphoneGradient)" stroke="#334155" stroke-width="2"/>
+  
+  <!-- Screen Area -->
+  <rect x="25" y="65" width="350" height="760" rx="35" ry="35" fill="#000000"/>
+  
+  <!-- Screen Glass Effect -->
+  <rect x="25" y="65" width="350" height="760" rx="35" ry="35" fill="url(#glassGradient)" opacity="0.1"/>
+  
+  <!-- Dynamic Island -->
+  <rect x="160" y="25" width="80" height="35" rx="17.5" ry="17.5" fill="#000000"/>
+  
+  <!-- Speaker -->
+  <rect x="180" y="830" width="40" height="4" rx="2" ry="2" fill="#4a5568"/>
+  
+  <!-- Side Buttons -->
+  <rect x="-5" y="200" width="10" height="60" rx="5" ry="5" fill="#2d3748"/>
+  <rect x="-5" y="300" width="10" height="40" rx="5" ry="5" fill="#2d3748"/>
+  <rect x="395" y="250" width="10" height="80" rx="5" ry="5" fill="#2d3748"/>
+  
+  <defs>
+    <linearGradient id="glassGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+</svg>

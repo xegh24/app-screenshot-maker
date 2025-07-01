@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  /* Improve tap targets on mobile */
+  button, 
+  a, 
+  input[type="button"], 
+  input[type="submit"], 
+  input[type="reset"] {
+    min-height: 44px;
+  }
+  
+  /* Better form inputs on mobile */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  textarea,
+  select {
+    font-size: 16px; /* Prevents zoom on iOS */
+    min-height: 44px;
+  }
+  
+  /* Improve scrolling on mobile */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Prevent iOS zoom on form inputs */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"], 
+  input[type="number"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Custom scrollbars for better UX */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Focus styles for better accessibility */
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Remove default focus styles on touch devices */
+@media (pointer: coarse) {
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}

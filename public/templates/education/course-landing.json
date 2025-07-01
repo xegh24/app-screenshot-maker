@@ -1,0 +1,113 @@
+{
+  "name": "Online Course Landing",
+  "description": "A modern landing page template for online courses with hero section, features, and CTA",
+  "category": "education",
+  "canvas_data": {
+    "canvas": {
+      "width": 1200,
+      "height": 800,
+      "backgroundColor": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "x": 100,
+        "y": 50,
+        "width": 1000,
+        "height": 80,
+        "rotation": 0,
+        "scaleX": 1,
+        "scaleY": 1,
+        "opacity": 1,
+        "visible": true,
+        "locked": false,
+        "style": {},
+        "data": {
+          "text": "Master Web Development",
+          "fontSize": 48,
+          "fontFamily": "Inter",
+          "fontWeight": "bold",
+          "fontStyle": "normal",
+          "textAlign": "center",
+          "textDecoration": "none",
+          "color": "#1F2937",
+          "lineHeight": 1.2,
+          "letterSpacing": 0
+        }
+      },
+      {
+        "type": "text",
+        "x": 100,
+        "y": 150,
+        "width": 1000,
+        "height": 40,
+        "rotation": 0,
+        "scaleX": 1,
+        "scaleY": 1,
+        "opacity": 1,
+        "visible": true,
+        "locked": false,
+        "style": {},
+        "data": {
+          "text": "Learn modern web development with hands-on projects and expert guidance",
+          "fontSize": 18,
+          "fontFamily": "Inter",
+          "fontWeight": "normal",
+          "fontStyle": "normal",
+          "textAlign": "center",
+          "textDecoration": "none",
+          "color": "#6B7280",
+          "lineHeight": 1.4,
+          "letterSpacing": 0
+        }
+      },
+      {
+        "type": "shape",
+        "x": 450,
+        "y": 220,
+        "width": 300,
+        "height": 60,
+        "rotation": 0,
+        "scaleX": 1,
+        "scaleY": 1,
+        "opacity": 1,
+        "visible": true,
+        "locked": false,
+        "style": {},
+        "data": {
+          "shape": "rectangle",
+          "fill": "#3B82F6",
+          "stroke": "none",
+          "strokeWidth": 0,
+          "cornerRadius": 12
+        }
+      },
+      {
+        "type": "text",
+        "x": 450,
+        "y": 235,
+        "width": 300,
+        "height": 30,
+        "rotation": 0,
+        "scaleX": 1,
+        "scaleY": 1,
+        "opacity": 1,
+        "visible": true,
+        "locked": false,
+        "style": {},
+        "data": {
+          "text": "Start Learning Today",
+          "fontSize": 16,
+          "fontFamily": "Inter",
+          "fontWeight": "600",
+          "fontStyle": "normal",
+          "textAlign": "center",
+          "textDecoration": "none",
+          "color": "#ffffff",
+          "lineHeight": 1.2,
+          "letterSpacing": 0
+        }
+      }
+    ]
+  }
+}

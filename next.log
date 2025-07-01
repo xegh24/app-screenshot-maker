@@ -1,0 +1,154 @@
+
+> app-screenshot-maker@0.1.0 dev
+> next dev --turbopack
+
+ ⚠ Port 3000 is in use, using available port 3001 instead.
+   ▲ Next.js 15.3.4 (Turbopack)
+   - Local:        http://localhost:3001
+   - Network:      http://10.255.255.254:3001
+   - Environments: .env.local
+
+ ✓ Starting...
+ ⚠ Invalid next.config.ts options detected: 
+ ⚠     Unrecognized key(s) in object: 'api'
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+Slow filesystem detected. If /mnt/e/WebApps/AppScreenshotMaker/app-screenshot-maker/.next is a network drive, consider moving it to a local folder. If you have an antivirus enabled, consider excluding your project directory.
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 3.1s
+ ✓ Ready in 74.9s
+ ⚠ Webpack is configured while Turbopack is not, which may cause problems.
+ ⚠ See instructions if you need to configure Turbopack:
+  https://nextjs.org/docs/app/api-reference/next-config-js/turbo
+
+ ○ Compiling / ...
+ ✓ Compiled / in 50.9s
+ ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET / 200 in 60642ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 17.9s
+ ⚠ Unsupported metadata viewport is configured in metadata export in /login. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /login?redirectTo=%2Feditor 200 in 22145ms
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 9.9s
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 13689ms
+   Reload env: .env.local
+ ✓ Compiled middleware in 139ms
+   Reload env: .env.local
+ ✓ Compiled in 14ms
+ ⨯ Error [TypeError]: Invalid URL
+    at new SupabaseClient (../../src/SupabaseClient.ts:79:20)
+    at createClient (../../src/index.ts:40:9)
+    at createServerClient (../../src/createServerClient.ts:154:4)
+    at updateSession (lib/supabase/middleware.ts:10:36)
+    at middleware (middleware.ts:5:29)
+   8 |   })
+   9 |
+> 10 |   const supabase = createServerClient<Database>(
+     |                                    ^
+  11 |     process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  12 |     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+  13 |     {
+ ○ Compiling /_error ...
+ ⨯ Error [TypeError]: Invalid URL
+    at new SupabaseClient (../../src/SupabaseClient.ts:79:20)
+    at createClient (../../src/index.ts:40:9)
+    at createServerClient (../../src/createServerClient.ts:154:4)
+    at updateSession (lib/supabase/middleware.ts:10:36)
+    at middleware (middleware.ts:5:29)
+   8 |   })
+   9 |
+> 10 |   const supabase = createServerClient<Database>(
+     |                                    ^
+  11 |     process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  12 |     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+  13 |     {
+ ✓ Compiled /_error in 12.6s
+   Reload env: .env.local
+ ○ Compiling middleware ...
+ ✓ Compiled middleware in 656ms
+ ○ Compiling /register ...
+ ✓ Compiled in 8.5s
+ ✓ Compiled /register in 13.6s
+ ⚠ Unsupported metadata viewport is configured in metadata export in /register. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /register 200 in 18441ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET / 200 in 2012ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /login. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /login 200 in 3098ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /login. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /login 200 in 2409ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /register. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /register 200 in 2926ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /register. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /register 200 in 2285ms
+ ○ Compiling /_not-found/page ...
+ ✓ Compiled /_not-found/page in 9.6s
+ ⚠ Unsupported metadata viewport is configured in metadata export in /auth/verify-email. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /auth/verify-email 404 in 12007ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /auth/verify-email. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /auth/verify-email 404 in 2443ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /auth/verify-email. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /auth/verify-email 404 in 1978ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 4225ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET / 200 in 2915ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /register. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /register 200 in 3497ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /auth/verify-email. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /auth/verify-email 404 in 2670ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /auth/verify-email. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /auth/verify-email 404 in 1330ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /auth/verify-email. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /register. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /auth/verify-email. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /login. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET / 200 in 7163ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 3224ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /login. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /login 200 in 2450ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /register. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /register 200 in 2838ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /auth/verify-email. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /auth/verify-email 404 in 2437ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /auth/verify-email. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /auth/verify-email 404 in 2823ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /register. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /register 200 in 2466ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /login. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /login 200 in 3073ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /login. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /login?redirectTo=%2Fdashboard 200 in 3855ms
+ ⚠ Unsupported metadata viewport is configured in metadata export in /login. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /login?redirectTo=%2Fdashboard 200 in 4467ms
+[?25h
