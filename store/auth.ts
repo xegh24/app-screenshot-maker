@@ -235,7 +235,7 @@ export const useAuthStore = create<AuthState>()(
           const { data, error } = await getSupabase().auth.signInWithOAuth({
             provider,
             options: {
-              redirectTo: `${window.location.origin}/dashboard`
+              redirectTo: `${window.location.origin}/auth/callback`
             }
           })
 
