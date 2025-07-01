@@ -6,7 +6,6 @@ import { BackgroundElement } from '../../store/editor'
 import ColorPicker from './ColorPicker'
 import { 
   Palette, 
-  Gradient, 
   Image as ImageIcon,
   Upload,
   X,
@@ -180,7 +179,7 @@ export default function BackgroundPanel() {
               : 'text-gray-600 hover:text-gray-900'
           }`}
         >
-          <Gradient className="h-4 w-4" />
+          <Palette className="h-4 w-4" />
           Gradient
         </button>
         <button

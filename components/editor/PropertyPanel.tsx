@@ -28,7 +28,7 @@ import type {
   FrameElement, 
   BackgroundElement 
 } from '../../store/editor'
-import { DeviceFrameSelector } from './DeviceFrame'
+// import { DeviceFrameSelector } from './DeviceFrame' // TODO: Implement DeviceFrameSelector
 import TextEditor from './TextEditor'
 import BackgroundPanel from './BackgroundPanel'
 
@@ -854,14 +854,10 @@ function FrameProperties({ element, onPropertyChange, openSections, toggleSectio
             />
           </div>
 
-          <DeviceFrameSelector
-            selectedFrame={frameElement.data.src}
-            onFrameSelect={(frameKey, frameSpec) => {
-              onPropertyChange('data.src', frameSpec.src)
-              onPropertyChange('data.frameType', frameSpec.name.toLowerCase().includes('mobile') ? 'mobile' : 'desktop')
-            }}
-            className="mt-4"
-          />
+          {/* TODO: Implement DeviceFrameSelector */}
+          <div className="mt-4 p-3 bg-gray-50 rounded-md text-sm text-gray-600">
+            Device frame selector will be implemented
+          </div>
         </div>
       )}
     </div>
