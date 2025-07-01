@@ -226,7 +226,10 @@ export default function ColorPicker({
             left: `${saturation}%`,
             top: `${100 - lightness}%`,
             transform: 'translate(-50%, -50%)',
-            backgroundColor: rgbToHex(...Object.values(hslToRgb(hue, saturation, lightness)))
+            backgroundColor: (() => {
+              const rgb = hslToRgb(hue, saturation, lightness)
+              return rgbToHex(rgb.r, rgb.g, rgb.b)
+            })()
           }}
         />
       </div>
@@ -267,7 +270,10 @@ export default function ColorPicker({
             style={{
               background: `linear-gradient(to right, 
                 transparent, 
-                ${rgbToHex(...Object.values(hslToRgb(hue, saturation, lightness)))}
+                ${(() => {
+                  const rgb = hslToRgb(hue, saturation, lightness)
+                  return rgbToHex(rgb.r, rgb.g, rgb.b)
+                })()
               )`
             }}
           />
