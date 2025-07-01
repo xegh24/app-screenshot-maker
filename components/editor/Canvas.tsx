@@ -961,7 +961,7 @@ export default function Canvas({
         isOpen={showDeviceSelector}
         onClose={handleDeviceSelectorClose}
         title="Select Device Frame"
-        size="large"
+        size="lg"
       >
         <DeviceSelector
           onDeviceSelect={handleDeviceSelect}
