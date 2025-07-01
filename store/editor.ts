@@ -130,7 +130,7 @@ export interface EditorState {
   selectedElementIds: string[]
   
   // Current design
-  currentDesign: Design | null
+  currentDesign: any | null
   isDesignSaved: boolean
   lastSavedAt: number | null
   autoSaveEnabled: boolean
@@ -199,10 +199,10 @@ export interface EditorState {
   clearHistory: () => void
   
   // Design actions
-  setCurrentDesign: (design: Design | null) => void
+  setCurrentDesign: (design: any | null) => void
   markAsUnsaved: () => void
   markAsSaved: () => void
-  loadDesign: (design: Design) => void
+  loadDesign: (design: any) => void
   exportCanvas: () => AnyCanvasElement[]
   importCanvas: (elements: AnyCanvasElement[]) => void
   
@@ -308,7 +308,7 @@ export const useEditorStore = create<EditorState>()(
       updateElement: (id, updates) => set((state) => {
         const elementIndex = state.elements.findIndex(el => el.id === id)
         if (elementIndex !== -1) {
-          state.elements[elementIndex] = { ...state.elements[elementIndex], ...updates }
+          state.elements[elementIndex] = { ...state.elements[elementIndex], ...updates } as any
           state.isDesignSaved = false
         }
       }),
@@ -522,7 +522,7 @@ export const useEditorStore = create<EditorState>()(
 
       // Design actions
       setCurrentDesign: (design) => set((state) => {
-        state.currentDesign = design
+        state.currentDesign = design as any
         state.isDesignSaved = true
         state.lastSavedAt = Date.now()
       }),
@@ -538,8 +538,8 @@ export const useEditorStore = create<EditorState>()(
 
       loadDesign: (design) => set((state) => {
         try {
-          const canvasData = design.canvas_data as any
-          state.currentDesign = design
+          const canvasData = (design as any).canvas_data
+          state.currentDesign = design as any
           state.elements = canvasData.elements || []
           state.canvas = { ...defaultCanvasState, ...(canvasData.canvas || {}) }
           state.selectedElementIds = []
@@ -583,8 +583,8 @@ export const useEditorStore = create<EditorState>()(
           timestamp: Date.now()
         }
         
-        const hasChanges = !state.isDesignSaved || 
-          (state.lastAutoSave && Date.now() - state.lastAutoSave > state.autoSaveInterval)
+        const hasChanges = Boolean(!state.isDesignSaved || 
+          (state.lastAutoSave && Date.now() - state.lastAutoSave > state.autoSaveInterval))
         
         return { canvasData, hasChanges }
       },

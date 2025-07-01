@@ -353,7 +353,7 @@ export const TemplateModal: React.FC<TemplateModalProps> = ({
               </Button>
               
               <Button
-                variant="primary"
+                variant="default"
                 onClick={handleApplyTemplate}
                 disabled={isApplying}
                 className="flex items-center gap-2"
@@ -391,7 +391,7 @@ export const TemplateModal: React.FC<TemplateModalProps> = ({
                 Cancel
               </Button>
               <Button
-                variant="primary"
+                variant="default"
                 onClick={handleDelete}
                 disabled={isLoading}
                 className="bg-red-600 hover:bg-red-700"

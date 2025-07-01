@@ -105,7 +105,8 @@ export const createElement = (
   height: number,
   data: Record<string, any>,
   style: Record<string, any> = {}
-): Omit<AnyCanvasElement, 'id' | 'zIndex'> => ({
+): AnyCanvasElement => ({
+  id: `template_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
   type,
   x,
   y,
@@ -117,9 +118,10 @@ export const createElement = (
   opacity: 1,
   visible: true,
   locked: false,
+  zIndex: 0,
   style,
   data
-} as any)
+} as AnyCanvasElement)
 
 // Sample template data
 export const SAMPLE_TEMPLATES: TemplateWithCanvas[] = [

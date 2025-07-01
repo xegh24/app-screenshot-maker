@@ -117,7 +117,7 @@ export const EXPORT_FORMATS = {
 // Enhanced export stage as image with more options
 export async function exportStageEnhanced(
   stage: Konva.Stage,
-  options: EnhancedExportOptions = {}
+  options: EnhancedExportOptions = { format: 'png' }
 ): Promise<Blob> {
   const {
     format = 'png',
@@ -213,7 +213,7 @@ async function exportAsPDF(stage: Konva.Stage, options: EnhancedExportOptions): 
       Legal: { width: 612, height: 1008 }
     }
     
-    const page = pageDimensions[pageSize] || pageDimensions.A4
+    const page = pageDimensions[pageSize as keyof typeof pageDimensions] || pageDimensions.A4
     const pageWidth = orientation === 'landscape' ? page.height : page.width
     const pageHeight = orientation === 'landscape' ? page.width : page.height
     

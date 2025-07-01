@@ -22,7 +22,7 @@ export function calculateExportDimensions(
   canvasWidth: number,
   canvasHeight: number,
   elements: AnyCanvasElement[],
-  options: ExportOptions = {}
+  options: ExportOptions = { format: 'png' }
 ): ExportDimensions {
   const { scale = 1, padding = 0, selectedOnly = false } = options
   
@@ -82,7 +82,7 @@ function getElementsBounds(elements: AnyCanvasElement[]): {
 // Export stage as image
 export async function exportStageAsImage(
   stage: Konva.Stage,
-  options: ExportOptions = {}
+  options: ExportOptions = { format: 'png' }
 ): Promise<Blob> {
   const {
     format = 'png',
@@ -159,7 +159,7 @@ export async function exportStageAsImage(
 export async function exportSelectedElements(
   stage: Konva.Stage,
   selectedElementIds: string[],
-  options: ExportOptions = {}
+  options: ExportOptions = { format: 'png' }
 ): Promise<Blob> {
   if (selectedElementIds.length === 0) {
     throw new Error('No elements selected for export')
@@ -192,7 +192,7 @@ export async function exportSelectedElements(
     
     // Add cloned nodes to temp layer
     selectedNodes.forEach(node => {
-      tempLayer.add(node)
+      tempLayer.add(node as any)
     })
     
     // Calculate bounds of selected elements
@@ -365,7 +365,7 @@ export function importCanvasData(jsonData: string): {
 // Export stage as SVG (more complex implementation would be needed for full SVG support)
 export async function exportStageAsSVG(
   stage: Konva.Stage,
-  options: ExportOptions = {}
+  options: ExportOptions = { format: 'png' }
 ): Promise<string> {
   // This is a simplified SVG export
   // For full SVG support, you'd need to traverse the stage and convert each node to SVG elements

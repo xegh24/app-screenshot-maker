@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 import { persist } from 'zustand/middleware'
-import { createClient } from '@supabase/supabase-js'
+import { supabase } from '../lib/supabase/client'
 import type { Database, Template } from '../types/database'
 import type { AnyCanvasElement } from './editor'
 import { SAMPLE_TEMPLATES } from '../lib/templates'
@@ -35,7 +35,7 @@ export interface TemplateFilters {
 }
 
 // Template with canvas data
-export interface TemplateWithCanvas extends Template {
+export interface TemplateWithCanvas extends Omit<Template, 'canvas_data'> {
   canvas_data: {
     elements: AnyCanvasElement[]
     canvas: {
@@ -151,10 +151,6 @@ export const useTemplatesStore = create<TemplatesState>()(
         try {
           // Try to fetch from Supabase if configured
           if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-            const supabase = createClient<Database>(
-              process.env.NEXT_PUBLIC_SUPABASE_URL!,
-              process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-            )
 
             const currentFilters = get().filters
             let query = supabase.from('templates').select('*')
@@ -182,7 +178,12 @@ export const useTemplatesStore = create<TemplatesState>()(
             }
 
             set((state) => {
-              state.templates = data as TemplateWithCanvas[]
+              state.templates = (data as any[]).map((template: any) => ({
+                ...template,
+                canvas_data: typeof template.canvas_data === 'string' 
+                  ? JSON.parse(template.canvas_data) 
+                  : template.canvas_data
+              })) as TemplateWithCanvas[]
               state.isFetching = false
             })
           } else {
@@ -209,8 +210,10 @@ export const useTemplatesStore = create<TemplatesState>()(
 
             // Apply sorting
             filteredTemplates.sort((a, b) => {
-              const aValue = a[currentFilters.sortBy as keyof TemplateWithCanvas]
-              const bValue = b[currentFilters.sortBy as keyof TemplateWithCanvas]
+              const aValue = a[currentFilters.sortBy as keyof TemplateWithCanvas] as string | number
+              const bValue = b[currentFilters.sortBy as keyof TemplateWithCanvas] as string | number
+              
+              if (!aValue || !bValue) return 0
               
               if (currentFilters.sortOrder === 'asc') {
                 return aValue < bValue ? -1 : aValue > bValue ? 1 : 0
@@ -264,10 +267,6 @@ export const useTemplatesStore = create<TemplatesState>()(
         try {
           // Try to fetch from Supabase if configured
           if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-            const supabase = createClient<Database>(
-              process.env.NEXT_PUBLIC_SUPABASE_URL!,
-              process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-            )
 
             const { data, error } = await supabase
               .from('templates')
@@ -281,7 +280,12 @@ export const useTemplatesStore = create<TemplatesState>()(
             }
 
             set((state) => {
-              state.featuredTemplates = data as TemplateWithCanvas[]
+              state.featuredTemplates = (data as any[]).map((template: any) => ({
+                ...template,
+                canvas_data: typeof template.canvas_data === 'string' 
+                  ? JSON.parse(template.canvas_data) 
+                  : template.canvas_data
+              })) as TemplateWithCanvas[]
               state.isFetching = false
             })
           } else {
@@ -313,10 +317,6 @@ export const useTemplatesStore = create<TemplatesState>()(
         })
 
         try {
-          const supabase = createClient<Database>(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-          )
 
           const { data: { user } } = await supabase.auth.getUser()
           if (!user) {
@@ -334,7 +334,12 @@ export const useTemplatesStore = create<TemplatesState>()(
           }
 
           set((state) => {
-            state.myTemplates = data as TemplateWithCanvas[]
+            state.myTemplates = (data as any[]).map((template: any) => ({
+              ...template,
+              canvas_data: typeof template.canvas_data === 'string' 
+                ? JSON.parse(template.canvas_data) 
+                : template.canvas_data
+            })) as TemplateWithCanvas[]
             state.isFetching = false
           })
         } catch (error: any) {
@@ -354,10 +359,6 @@ export const useTemplatesStore = create<TemplatesState>()(
         try {
           // Try to fetch from Supabase if configured
           if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-            const supabase = createClient<Database>(
-              process.env.NEXT_PUBLIC_SUPABASE_URL!,
-              process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-            )
 
             const { data, error } = await supabase
               .from('templates')
@@ -370,7 +371,12 @@ export const useTemplatesStore = create<TemplatesState>()(
             }
 
             set((state) => {
-              state.recentTemplates = data as TemplateWithCanvas[]
+              state.recentTemplates = (data as any[]).map((template: any) => ({
+                ...template,
+                canvas_data: typeof template.canvas_data === 'string' 
+                  ? JSON.parse(template.canvas_data) 
+                  : template.canvas_data
+              })) as TemplateWithCanvas[]
               state.isFetching = false
             })
           } else {
@@ -407,10 +413,6 @@ export const useTemplatesStore = create<TemplatesState>()(
         })
 
         try {
-          const supabase = createClient<Database>(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-          )
 
           const { data: { user } } = await supabase.auth.getUser()
           if (!user) {
@@ -421,6 +423,7 @@ export const useTemplatesStore = create<TemplatesState>()(
             .from('templates')
             .insert({
               ...template,
+              canvas_data: JSON.parse(JSON.stringify(template.canvas_data)) as any,
               created_by: user.id
             })
             .select()
@@ -430,7 +433,10 @@ export const useTemplatesStore = create<TemplatesState>()(
             throw error
           }
 
-          const newTemplate = data as TemplateWithCanvas
+          const newTemplate = {
+            ...data,
+            canvas_data: typeof (data as any).canvas_data === 'string' ? JSON.parse((data as any).canvas_data) : (data as any).canvas_data
+          } as TemplateWithCanvas
 
           set((state) => {
             state.templates.unshift(newTemplate)
@@ -455,14 +461,13 @@ export const useTemplatesStore = create<TemplatesState>()(
         })
 
         try {
-          const supabase = createClient<Database>(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-          )
 
           const { error } = await supabase
             .from('templates')
-            .update(updates)
+            .update({
+              ...updates,
+              canvas_data: updates.canvas_data ? JSON.parse(JSON.stringify(updates.canvas_data)) as any : undefined
+            })
             .eq('id', id)
 
           if (error) {
@@ -507,10 +512,6 @@ export const useTemplatesStore = create<TemplatesState>()(
         })
 
         try {
-          const supabase = createClient<Database>(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-          )
 
           const { error } = await supabase
             .from('templates')
@@ -559,10 +560,6 @@ export const useTemplatesStore = create<TemplatesState>()(
             throw new Error('Template not found')
           }
 
-          const supabase = createClient<Database>(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-          )
 
           const { data: { user } } = await supabase.auth.getUser()
           if (!user) {
@@ -575,7 +572,7 @@ export const useTemplatesStore = create<TemplatesState>()(
               name: name || `${originalTemplate.name} (Copy)`,
               description: originalTemplate.description,
               category: originalTemplate.category,
-              canvas_data: originalTemplate.canvas_data,
+              canvas_data: JSON.parse(JSON.stringify(originalTemplate.canvas_data)) as any,
               preview_url: originalTemplate.preview_url,
               is_featured: false,
               created_by: user.id
@@ -587,7 +584,10 @@ export const useTemplatesStore = create<TemplatesState>()(
             throw error
           }
 
-          const newTemplate = data as TemplateWithCanvas
+          const newTemplate = {
+            ...data,
+            canvas_data: typeof (data as any).canvas_data === 'string' ? JSON.parse((data as any).canvas_data) : (data as any).canvas_data
+          } as TemplateWithCanvas
 
           set((state) => {
             state.templates.unshift(newTemplate)

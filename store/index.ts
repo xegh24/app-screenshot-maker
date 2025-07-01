@@ -10,9 +10,8 @@ export { useAuthStore } from './auth'
 export { useUIStore, useNotifications, useConfirmDialog, useContextMenu } from './ui'
 export { useTemplatesStore } from './templates'
 
-// Export types
+// Export editor types
 export type {
-  // Editor types
   CanvasElement,
   TextElement,
   ImageElement,
@@ -22,29 +21,7 @@ export type {
   AnyCanvasElement,
   CanvasState,
   HistoryState,
-  EditorState,
-  
-  // Auth types
-  UserProfile,
-  AuthState,
-  
-  // UI types
-  ModalType,
-  SidebarPanel,
-  Notification,
-  ConfirmDialog,
-  ContextMenuItem,
-  ContextMenu,
-  ToolbarConfig,
-  UIPreferences,
-  UIState,
-  
-  // Template types
-  TemplateCategory,
-  TemplateFilters,
-  TemplateWithCanvas,
-  TemplateUsage,
-  TemplatesState
+  EditorState
 } from './editor'
 
 export type { UserProfile, AuthState } from './auth'

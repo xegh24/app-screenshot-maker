@@ -339,7 +339,7 @@ export function generateCSSFilters(filters: {
 }
 
 // Convert Konva filters to CSS filters
-export function konvaFiltersToCSS(filters: Konva.Filter[]): string {
+export function konvaFiltersToCSS(filters: any[]): string {
   // This is a simplified conversion - in a real implementation,
   // you'd need to map each Konva filter to its CSS equivalent
   return ''

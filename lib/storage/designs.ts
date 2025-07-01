@@ -328,7 +328,9 @@ export async function duplicateDesign(designId: string, newTitle?: string): Prom
 
     // Create the duplicate
     const title = newTitle || `${originalDesign.title} (Copy)`
-    const canvasData = originalDesign.canvas_data as CanvasData
+    const canvasData = (typeof originalDesign.canvas_data === 'string' 
+      ? JSON.parse(originalDesign.canvas_data) 
+      : originalDesign.canvas_data) as CanvasData
 
     const saveOptions: SaveDesignOptions = {
       title,

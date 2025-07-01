@@ -136,7 +136,7 @@ export const TemplatePanel: React.FC<TemplatePanelProps> = ({
       case 'recent':
         return recentTemplates
       case 'categories':
-        return selectedCategory === 'all' ? templates : getTemplatesByCategory(selectedCategory)
+        return selectedCategory === 'all' ? templates : getTemplatesByCategory(selectedCategory as any)
       default:
         return featuredTemplates
     }

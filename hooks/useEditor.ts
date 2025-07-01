@@ -489,8 +489,8 @@ export const useKeyboardShortcuts = () => {
 export const useAutoSave = () => {
   const { preferences } = useUIStore()
   const { saveDesign } = useEditor()
-  const { isDesignSaved, currentDesign } = useEditorStore()
-  const intervalRef = useRef<NodeJS.Timeout>()
+  const { isDesignSaved, currentDesign } = useEditorStore() as any
+  const intervalRef = useRef<NodeJS.Timeout | undefined>(undefined)
 
   useEffect(() => {
     if (!preferences.autoSave) return
@@ -530,7 +530,7 @@ export const useElementManipulation = () => {
   }, [editorStore])
 
   const setElementData = useCallback((id: string, data: Record<string, any>) => {
-    editorStore.updateElement(id, { data })
+    editorStore.updateElement(id, { data } as any)
   }, [editorStore])
 
   const alignElements = useCallback((alignment: 'left' | 'center' | 'right' | 'top' | 'middle' | 'bottom') => {
