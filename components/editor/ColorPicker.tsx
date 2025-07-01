@@ -273,8 +273,7 @@ export default function ColorPicker({
                 ${(() => {
                   const rgb = hslToRgb(hue, saturation, lightness)
                   return rgbToHex(rgb.r, rgb.g, rgb.b)
-                })()
-              )`
+                })()})`
             }}
           />
         </div>
