@@ -334,10 +334,10 @@ function TextElementRenderer({
 // Image Element Renderer
 function ImageElementRenderer({ element, ...props }: { element: ImageElement } & any) {
   const [image] = useImage(element.data.src, 'anonymous')
-  const [filters, setFilters] = useState<Konva.Filter[]>([])
+  const [filters, setFilters] = useState<any[]>([])
 
   useEffect(() => {
-    const imageFilters: Konva.Filter[] = []
+    const imageFilters: any[] = []
     
     if (element.data.filters.brightness !== 100) {
       imageFilters.push(Konva.Filters.Brighten)
