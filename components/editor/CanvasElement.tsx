@@ -557,7 +557,7 @@ function BackgroundElementRenderer({ element, ...props }: { element: BackgroundE
           fillLinearGradientStartPoint={{ x: 0, y: 0 }}
           fillLinearGradientEndPoint={{ x: element.width, y: element.height }}
           fillLinearGradientColorStops={
-            gradient?.colors.flatMap(c => [c.stop, c.color]) || [0, '#ffffff', 1, '#000000']
+            gradient?.colors.flatMap((c: any) => [c.stop, c.color]) || [0, '#ffffff', 1, '#000000']
           }
         />
       )
