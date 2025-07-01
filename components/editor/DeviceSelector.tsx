@@ -79,7 +79,7 @@ export default function DeviceSelector({
 
       setLoadingImages(prev => new Set(prev).add(device.id))
       
-      const img = new Image()
+      const img = new window.Image()
       img.crossOrigin = 'anonymous'
       img.onload = () => {
         setPreviewImages(prev => ({ ...prev, [device.id]: img }))

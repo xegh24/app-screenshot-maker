@@ -396,7 +396,7 @@ export async function printCanvas(stage: Konva.Stage): Promise<void> {
     })
     
     const url = URL.createObjectURL(blob)
-    const img = new Image()
+    const img = new window.Image()
     
     return new Promise((resolve, reject) => {
       img.onload = () => {

@@ -241,7 +241,7 @@ async function exportAsPDF(stage: Konva.Stage, options: EnhancedExportOptions): 
     })
     
     return new Promise((resolve, reject) => {
-      const img = new Image()
+      const img = new window.Image()
       img.onload = () => {
         // Calculate scaling to fit image on page while maintaining aspect ratio
         const imgAspect = img.width / img.height

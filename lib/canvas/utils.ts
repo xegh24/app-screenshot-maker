@@ -348,7 +348,7 @@ export function konvaFiltersToCSS(filters: Konva.Filter[]): string {
 // Load image and return dimensions
 export function loadImage(src: string): Promise<{ image: HTMLImageElement; width: number; height: number }> {
   return new Promise((resolve, reject) => {
-    const img = new Image()
+    const img = new window.Image()
     img.crossOrigin = 'anonymous'
     img.onload = () => {
       resolve({

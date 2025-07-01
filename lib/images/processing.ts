@@ -78,7 +78,7 @@ export function filtersToCSS(filters: Partial<ImageFilters>): string {
 // Get image dimensions from file
 export function getImageDimensions(file: File): Promise<ImageDimensions> {
   return new Promise((resolve, reject) => {
-    const img = new Image()
+    const img = new window.Image()
     const objectUrl = URL.createObjectURL(file)
     
     img.onload = () => {
@@ -101,7 +101,7 @@ export function getImageDimensions(file: File): Promise<ImageDimensions> {
 // Get image dimensions from URL
 export function getImageDimensionsFromUrl(url: string): Promise<ImageDimensions> {
   return new Promise((resolve, reject) => {
-    const img = new Image()
+    const img = new window.Image()
     
     img.onload = () => {
       resolve({
@@ -165,7 +165,7 @@ export function optimizeImage(
       maintainAspectRatio = true
     } = options
     
-    const img = new Image()
+    const img = new window.Image()
     const canvas = document.createElement('canvas')
     const ctx = canvas.getContext('2d')
     
@@ -244,7 +244,7 @@ export function applyFiltersToImage(
   dimensions?: ImageDimensions
 ): Promise<{ blob: Blob; canvas: HTMLCanvasElement }> {
   return new Promise((resolve, reject) => {
-    const img = new Image()
+    const img = new window.Image()
     const canvas = document.createElement('canvas')
     const ctx = canvas.getContext('2d')
     
@@ -297,7 +297,7 @@ export function generateThumbnail(
   quality: number = 0.8
 ): Promise<Blob> {
   return new Promise((resolve, reject) => {
-    const img = new Image()
+    const img = new window.Image()
     const canvas = document.createElement('canvas')
     const ctx = canvas.getContext('2d')
     
@@ -423,7 +423,7 @@ export function analyzeImageColors(
   sampleSize: number = 10
 ): Promise<{ dominantColors: string[]; averageColor: string }> {
   return new Promise((resolve, reject) => {
-    const img = new Image()
+    const img = new window.Image()
     const canvas = document.createElement('canvas')
     const ctx = canvas.getContext('2d')
     

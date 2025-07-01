@@ -93,7 +93,7 @@ export const useEditor = () => {
 
   // Create image element
   const createImageElement = useCallback((src: string, x: number = 100, y: number = 100) => {
-    const img = new Image()
+    const img = new window.Image()
     img.onload = () => {
       const imageElement: Omit<ImageElement, 'id' | 'zIndex'> = {
         type: 'image',
