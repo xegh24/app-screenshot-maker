@@ -337,7 +337,7 @@ export default function Toolbar({ onExport, onOpenExportModal, stage, className 
                         handleActionClick(tool.action)
                         setShowMobileMenu(false)
                       }}
-                      disabled={tool.disabled}
+                      disabled={'disabled' in tool ? tool.disabled : false}
                       showLabel={true}
                     />
                   ))}
@@ -356,7 +356,7 @@ export default function Toolbar({ onExport, onOpenExportModal, stage, className 
                         handleActionClick(tool.action)
                         setShowMobileMenu(false)
                       }}
-                      disabled={tool.disabled}
+                      disabled={'disabled' in tool ? tool.disabled : false}
                       showLabel={true}
                     />
                   ))}

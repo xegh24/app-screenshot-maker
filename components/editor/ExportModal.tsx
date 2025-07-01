@@ -301,13 +301,14 @@ export function ExportModal({ isOpen, onClose, stage }: ExportModalProps) {
       selectedPresets.forEach((presetKey, index) => {
         const [category, size] = presetKey.split('/')
         const categoryPresets = EXPORT_PRESETS[category as keyof typeof EXPORT_PRESETS]
-        const preset = categoryPresets[size as keyof typeof categoryPresets]
+        const preset = categoryPresets?.[size as keyof typeof categoryPresets] as { width: number; height: number } | undefined
         
         if (preset) {
           allExports.push({
             id: `preset_${index}`,
             format: 'png',
-            ...preset,
+            width: preset.width,
+            height: preset.height,
             filename: generateFilename(`${category}_${size.replace(/[^a-zA-Z0-9]/g, '_')}`, 'png'),
             quality: 0.9,
             includeBackground: true
@@ -811,7 +812,7 @@ function SingleExportTab({
               <input
                 type="checkbox"
                 id="highRes"
-                checked={config.scale && config.scale >= 2}
+                checked={!!config.scale && config.scale >= 2}
                 onChange={(e) => onChange({ 
                   ...config, 
                   scale: e.target.checked ? 2 : 1 

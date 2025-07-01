@@ -18,6 +18,8 @@ export const TEMPLATE_CATEGORIES = [
   'e-commerce',
   'dashboard',
   'landing-page',
+  'education',
+  'food',
   'other'
 ] as const
 

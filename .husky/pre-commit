@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+
+echo "🔍 Running pre-commit checks..."
+
+# Run TypeScript check
+echo "📝 Checking TypeScript types..."
+npm run type-check
+if [ $? -ne 0 ]; then
+  echo "❌ TypeScript errors found. Please fix them before committing."
+  exit 1
+fi
+
+# Run linting
+echo "🧹 Running ESLint..."
+npm run lint
+if [ $? -ne 0 ]; then
+  echo "❌ Linting errors found. Run 'npm run lint:fix' to fix automatically."
+  exit 1
+fi
+
+# Run prettier check
+echo "💅 Checking code formatting..."
+npm run format:check
+if [ $? -ne 0 ]; then
+  echo "❌ Formatting issues found. Run 'npm run format' to fix automatically."
+  exit 1
+fi
+
+echo "✅ All checks passed! Proceeding with commit..."

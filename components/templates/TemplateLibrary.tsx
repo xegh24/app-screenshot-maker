@@ -122,7 +122,7 @@ export const TemplateLibrary: React.FC<TemplateLibraryProps> = ({
             <h2 className="text-2xl font-bold text-gray-900">Template Library</h2>
             <div className="flex items-center gap-2">
               <Button
-                variant={viewMode === 'grid' ? 'primary' : 'secondary'}
+                variant={viewMode === 'grid' ? 'default' : 'secondary'}
                 size="sm"
                 onClick={() => setViewMode('grid')}
                 className="p-2"
@@ -130,7 +130,7 @@ export const TemplateLibrary: React.FC<TemplateLibraryProps> = ({
                 <Grid className="w-4 h-4" />
               </Button>
               <Button
-                variant={viewMode === 'list' ? 'primary' : 'secondary'}
+                variant={viewMode === 'list' ? 'default' : 'secondary'}
                 size="sm"
                 onClick={() => setViewMode('list')}
                 className="p-2"

@@ -214,7 +214,7 @@ export default function DeviceSelector({
         <div className="mb-6">
           <div className="flex flex-wrap gap-2">
             <Button
-              variant={activeCategory === 'popular' ? 'primary' : 'secondary'}
+              variant={activeCategory === 'popular' ? 'default' : 'secondary'}
               size="sm"
               onClick={() => setActiveCategory('popular')}
               className="text-xs"
@@ -225,7 +225,7 @@ export default function DeviceSelector({
             {Object.entries(CATEGORY_LABELS).map(([key, label]) => (
               <Button
                 key={key}
-                variant={activeCategory === key ? 'primary' : 'secondary'}
+                variant={activeCategory === key ? 'default' : 'secondary'}
                 size="sm"
                 onClick={() => setActiveCategory(key as CategoryKey)}
                 className="text-xs"

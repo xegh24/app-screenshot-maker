@@ -182,7 +182,7 @@ export const useEditor = () => {
         user_id: user.id,
         title: title || editorStore.currentDesign?.title || 'Untitled Design',
         description: description || editorStore.currentDesign?.description || null,
-        canvas_data: canvasData,
+        canvas_data: JSON.parse(JSON.stringify(canvasData)),
         is_public: false
       }
 
