@@ -81,9 +81,9 @@ export default function PropertyPanel({ className = '' }: PropertyPanelProps) {
       const dataKey = property.replace('data.', '')
       updateElement(elementId, {
         data: { ...element.data, [dataKey]: value }
-      } as Partial<typeof element>)
+      } as any)
     } else {
-      updateElement(elementId, { [property]: value } as Partial<typeof element>)
+      updateElement(elementId, { [property]: value } as any)
     }
   }
 

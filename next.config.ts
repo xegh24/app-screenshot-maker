@@ -39,13 +39,6 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // API configuration
-  api: {
-    bodyParser: {
-      sizeLimit: '10mb',
-    },
-    responseLimit: '10mb',
-  },
 
   // Build configuration
   experimental: {
