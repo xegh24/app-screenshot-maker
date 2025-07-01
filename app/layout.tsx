@@ -31,11 +31,12 @@ export const metadata: Metadata = {
     title: "App Screenshot Maker",
     description: "Create beautiful app screenshots with ease",
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({

@@ -1,7 +1,15 @@
 import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 import { persist } from 'zustand/middleware'
-import { supabase } from '@/lib/supabase/client'
+// Import supabase lazily to avoid build-time initialization
+let supabaseClient: any = null
+const getSupabase = () => {
+  if (!supabaseClient) {
+    const { supabase } = require('@/lib/supabase/client')
+    supabaseClient = supabase
+  }
+  return supabaseClient
+}
 import type { User, Session, AuthError } from '@supabase/supabase-js'
 import type { Database } from '../types/database'
 
@@ -91,7 +99,7 @@ export const useAuthStore = create<AuthState>()(
 
         try {
           // Get initial session
-          const { data: { session }, error } = await supabase.auth.getSession()
+          const { data: { session }, error } = await getSupabase().auth.getSession()
           
           if (error) {
             throw error
@@ -108,7 +116,7 @@ export const useAuthStore = create<AuthState>()(
           }
 
           // Set up auth state change listener
-          supabase.auth.onAuthStateChange(async (event, session) => {
+          getSupabase().auth.onAuthStateChange(async (event, session) => {
             set((state) => {
               state.session = session
               state.user = session?.user || null
@@ -144,7 +152,7 @@ export const useAuthStore = create<AuthState>()(
         })
 
         try {
-          const { data, error } = await supabase.auth.signInWithPassword({
+          const { data, error } = await getSupabase().auth.signInWithPassword({
             email,
             password
           })
@@ -183,7 +191,7 @@ export const useAuthStore = create<AuthState>()(
         })
 
         try {
-          const { data, error } = await supabase.auth.signUp({
+          const { data, error } = await getSupabase().auth.signUp({
             email,
             password,
             options: {
@@ -224,7 +232,7 @@ export const useAuthStore = create<AuthState>()(
         })
 
         try {
-          const { data, error } = await supabase.auth.signInWithOAuth({
+          const { data, error } = await getSupabase().auth.signInWithOAuth({
             provider,
             options: {
               redirectTo: `${window.location.origin}/dashboard`
@@ -256,7 +264,7 @@ export const useAuthStore = create<AuthState>()(
         })
 
         try {
-          const { error } = await supabase.auth.signOut()
+          const { error } = await getSupabase().auth.signOut()
 
           if (error) {
             set((state) => {
@@ -291,7 +299,7 @@ export const useAuthStore = create<AuthState>()(
         })
 
         try {
-          const { error } = await supabase.auth.resetPasswordForEmail(email, {
+          const { error } = await getSupabase().auth.resetPasswordForEmail(email, {
             redirectTo: `${window.location.origin}/auth/reset-password`
           })
 
@@ -324,7 +332,7 @@ export const useAuthStore = create<AuthState>()(
         })
 
         try {
-          const { error } = await supabase.auth.updateUser({
+          const { error } = await getSupabase().auth.updateUser({
             password
           })
 
@@ -358,7 +366,7 @@ export const useAuthStore = create<AuthState>()(
         })
 
         try {
-          const { error } = await supabase.auth.updateUser({
+          const { error } = await getSupabase().auth.updateUser({
             data: updates
           })
 
@@ -429,7 +437,7 @@ export const useAuthStore = create<AuthState>()(
           const fileExt = file.name.split('.').pop()
           const fileName = `${get().user?.id}-${Date.now()}.${fileExt}`
 
-          const { data, error } = await supabase.storage
+          const { data, error } = await getSupabase().storage
             .from('avatars')
             .upload(fileName, file)
 
@@ -441,12 +449,12 @@ export const useAuthStore = create<AuthState>()(
             return { error }
           }
 
-          const { data: { publicUrl } } = supabase.storage
+          const { data: { publicUrl } } = getSupabase().storage
             .from('avatars')
             .getPublicUrl(fileName)
 
           // Update user metadata
-          await supabase.auth.updateUser({
+          await getSupabase().auth.updateUser({
             data: { avatar_url: publicUrl }
           })
 
@@ -470,7 +478,7 @@ export const useAuthStore = create<AuthState>()(
       // Session actions
       refreshSession: async () => {
         try {
-          const { data, error } = await supabase.auth.refreshSession()
+          const { data, error } = await getSupabase().auth.refreshSession()
 
           if (error) {
             throw error
