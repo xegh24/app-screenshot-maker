@@ -547,7 +547,7 @@ export default function Canvas({
         reader.onload = (event) => {
           const src = event.target?.result as string
           if (src) {
-            const img = new Image()
+            const img = new window.Image()
             img.onload = () => {
               const elementData: Omit<AnyCanvasElement, 'id' | 'zIndex'> = {
                 type: 'image',
