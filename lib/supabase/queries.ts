@@ -228,6 +228,6 @@ export const getTemplateCategories = async () => {
     .order('category')
 
   // Get unique categories
-  const categories = [...new Set(data?.map(item => item.category) || [])]
+  const categories = [...new Set(data?.map((item: any) => item.category) || [])]
   return categories
 }

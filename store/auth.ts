@@ -116,7 +116,7 @@ export const useAuthStore = create<AuthState>()(
           }
 
           // Set up auth state change listener
-          getSupabase().auth.onAuthStateChange(async (event, session) => {
+          getSupabase().auth.onAuthStateChange(async (event: any, session: any) => {
             set((state) => {
               state.session = session
               state.user = session?.user || null

@@ -184,7 +184,7 @@ export async function getUserAssets(
     }
 
     // Add public URLs to assets
-    const assetsWithUrls = (data || []).map(asset => {
+    const assetsWithUrls = (data || []).map((asset: any) => {
       const { data: { publicUrl } } = supabase.storage
         .from('uploads')
         .getPublicUrl(asset.file_path)
@@ -271,7 +271,7 @@ export async function deleteAssets(assetIds: string[]): Promise<{ success: boole
     }
 
     // Delete from storage
-    const filePaths = assets.map(asset => asset.file_path)
+    const filePaths = assets.map((asset: any) => asset.file_path)
     const { error: storageError } = await supabase.storage
       .from('uploads')
       .remove(filePaths)
@@ -318,7 +318,7 @@ export async function getStorageUsage(): Promise<{ used: number, limit: number, 
       return { used: 0, limit: 0, percentage: 0 }
     }
 
-    const used = data?.reduce((total, item) => total + (item.file_size || 0), 0) || 0
+    const used = data?.reduce((total: number, item: any) => total + (item.file_size || 0), 0) || 0
     const limit = 500 * 1024 * 1024 // 500MB limit per user
     const percentage = Math.min((used / limit) * 100, 100)
 
